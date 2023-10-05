@@ -1,8 +1,11 @@
-# React + Vite
+**_ ITAcademy bootcamp _**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPRINT-7
+StarWars - Redux, Context, ReactQuery
 
-Currently, two official plugins are available:
+Objectives:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create a Login, Logout and Register.
+- Work on an API connection.
+- Optimize loading using LazyLoading modules.
+- Work with Bootstrap modals.
