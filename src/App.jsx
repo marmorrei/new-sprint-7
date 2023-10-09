@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import StarshipsList from './components/StarshipsList/StarshipsList';
 
