@@ -1,14 +1,21 @@
 import { useState } from 'react';
-import { fetchStarships } from '../../utils/api/fetch-starships';
 import StarshipDetailsModal from '../StarshipDetailsModal/StarshipDetailsModal';
 import { ListItem } from './Styled-components';
+import { useStarships } from '../../utils/hooks/useStarships';
 
 export default function StarshipsList() {
   const [displayModal, setDisplayModal] = useState(false);
   const [selectedStarship, setSelectedStarship] = useState(undefined);
-  const starshipsQuery = fetchStarships();
+  const {
+    starships,
+    isError,
+    isLoading,
+    isFetchingNextPage,
+    hasNextPage,
+    fetchNextPage,
+  } = useStarships();
 
-  const starshipsList = starshipsQuery.data?.map(starship => (
+  const starshipsList = starships.map(starship => (
     <ListItem
       key={starship.name}
       onClick={() => {
@@ -24,9 +31,17 @@ export default function StarshipsList() {
   return (
     <>
       <h1>Starships</h1>
-      {starshipsQuery.data?.length > 0 && <ul>{starshipsList}</ul>}
-      {starshipsQuery.isLoading && <strong>Loading...</strong>}
-      {starshipsQuery.error && <p>There is an error</p>}
+      {starships.length > 0 && <ul>{starshipsList}</ul>}
+      {isLoading && <strong>Loading...</strong>}
+      {isError && <p>There is an error</p>}
+      {!isLoading && !isError && hasNextPage === true && (
+        <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+          {isFetchingNextPage ? 'Loading more' : 'View more'}
+        </button>
+      )}
+      {!isLoading && !isError && hasNextPage === false && (
+        <p>There are no more results.</p>
+      )}
       {displayModal && (
         <StarshipDetailsModal
           modalState={displayModal}
