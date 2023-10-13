@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import StarshipDetailsModal from '../StarshipDetailsModal/StarshipDetailsModal';
-import { ListItem } from './Styled-components';
+import { MainContainer, ListItem } from './Styled-components';
 import { useStarships } from '../../utils/hooks/useStarships';
+import starshipsImg from '../../assets/starship-images';
 
 export default function StarshipsList() {
   const [displayModal, setDisplayModal] = useState(false);
@@ -15,7 +16,7 @@ export default function StarshipsList() {
     fetchNextPage,
   } = useStarships();
 
-  const starshipsList = starships.map(starship => (
+  const starshipsList = starships?.map(starship => (
     <ListItem
       key={starship.name}
       onClick={() => {
@@ -23,14 +24,21 @@ export default function StarshipsList() {
         setSelectedStarship(starship);
       }}
     >
-      <p>{starship.name}</p>
+      <h2>{starship.name}</h2>
       <p>{starship.model}</p>
+      <img
+        src={
+          starshipsImg?.find(element => element.name === starship.name).url ||
+          'https://starwars-visualguide.com/assets/img/placeholder.jpg'
+        }
+        alt={starship.name}
+      />
     </ListItem>
   ));
 
   return (
-    <>
-      <h1>Starships</h1>
+    <MainContainer>
+      <h1>STARSHIPS</h1>
       {starships.length > 0 && <ul>{starshipsList}</ul>}
       {isLoading && <strong>Loading...</strong>}
       {isError && <p>There is an error</p>}
@@ -49,6 +57,6 @@ export default function StarshipsList() {
           selectedStarship={selectedStarship}
         />
       )}
-    </>
+    </MainContainer>
   );
 }
