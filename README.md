@@ -7,5 +7,3 @@ Objectives:
 
 - Create a Login, Logout and Register.
 - Work on an API connection.
-- Optimize loading using LazyLoading modules.
-- Work with Bootstrap modals.
