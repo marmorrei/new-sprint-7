@@ -24,10 +24,16 @@ export const MainContainer = styled.main`
 
   button {
     align-self: center;
-    background-color: #b5b7b747;
-    border: solid 0.2rem #b5b7b747;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1.3rem;
+    background-color: #fade4b;
+    border: none;
+    border-radius: 1.4rem;
+    padding: 0.9rem 3.1rem;
+    color: black;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background-color: #dec442;
   }
 
   p {

@@ -13,13 +13,18 @@ export const NavbarStyle = styled.nav`
     margin: 1rem 2rem 0 2rem;
   }
 
-  span {
+  a {
+    text-decoration: none;
     color: #b5b7b7;
     font-size: 0.9rem;
     font-weight: 700;
   }
 
-  span:hover {
+  a:hover {
+    color: white;
+  }
+
+  a.is-active {
     color: white;
   }
 `;

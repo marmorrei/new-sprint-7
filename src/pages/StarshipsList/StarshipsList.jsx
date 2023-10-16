@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import StarshipDetailsModal from '../StarshipDetailsModal/StarshipDetailsModal';
+import StarshipDetailsModal from '../../components/StarshipDetailsModal/StarshipDetailsModal';
 import { MainContainer, ListItem } from './Styled-components';
 import { useStarships } from '../../utils/hooks/useStarships';
 import starshipsImg from '../../assets/starship-images';
@@ -44,7 +44,7 @@ export default function StarshipsList() {
       {isError && <p>There is an error</p>}
       {!isLoading && !isError && hasNextPage === true && (
         <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-          {isFetchingNextPage ? 'Loading more' : 'View more'}
+          {isFetchingNextPage ? 'LOADING MORE' : 'VIEW MORE'}
         </button>
       )}
       {!isLoading && !isError && hasNextPage === false && (
