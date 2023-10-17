@@ -45,103 +45,78 @@ const starshipsImg = [
   },
   {
     name: 'Imperial shuttle',
-    url: '',
   },
   {
     name: 'EF76 Nebulon-B escort frigate',
-    url: '',
   },
   {
     name: 'Calamari Cruiser',
-    url: '',
   },
   {
     name: 'A-wing',
-    url: '',
   },
   {
     name: 'B-wing',
-    url: '',
   },
   {
     name: 'Republic Cruiser',
-    url: '',
   },
   {
     name: 'Droid control ship',
-    url: '',
   },
   {
     name: 'Naboo fighter',
-    url: '',
   },
   {
     name: 'Naboo Royal Starship',
-    url: '',
   },
   {
     name: 'Scimitar',
-    url: '',
   },
   {
     name: 'J-type diplomatic barge',
-    url: '',
   },
   {
     name: 'AA-9 Coruscant freighter',
-    url: '',
   },
   {
     name: 'Jedi starfighter',
-    url: '',
   },
   {
     name: 'H-type Nubian yacht',
-    url: '',
   },
   {
     name: 'Republic Assault ship',
-    url: '',
   },
   {
     name: 'Solar Sailer',
-    url: '',
   },
   {
     name: 'Trade Federation cruiser',
-    url: '',
   },
   {
     name: 'Theta-class T-2c shuttle',
-    url: '',
   },
   {
     name: 'Republic attack cruiser',
-    url: '',
   },
   {
     name: 'Naboo star skiff',
-    url: '',
   },
   {
     name: 'Jedi Interceptor',
-    url: '',
   },
   {
     name: 'arc-170',
-    url: '',
   },
   {
     name: 'Banking clan frigate',
-    url: '',
   },
   {
     name: 'Belbullab-22 starfighter',
-    url: '',
   },
   {
     name: 'V-wing',
-    url: '',
   },
 ];
 
