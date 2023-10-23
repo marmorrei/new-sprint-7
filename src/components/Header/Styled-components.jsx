@@ -21,12 +21,12 @@ export const HeaderStyle = styled.header`
     align-items: center;
   }
 
-  ul.login li img {
+  ul.search-login li img {
     margin-right: 0.5rem;
     max-height: 1rem;
   }
 
-  ul.login li span {
+  ul.search-login li span {
     font-size: 0.9rem;
     font-weight: 700;
   }
@@ -37,5 +37,20 @@ export const HeaderStyle = styled.header`
 
   .logo img {
     max-height: 5.2rem;
+  }
+
+  li.login:hover {
+    img {
+      max-height: 1.3rem;
+    }
+    span {
+      font-size: 1rem;
+    }
+  }
+
+  li.logout:hover {
+    span {
+      font-size: 1rem;
+    }
   }
 `;

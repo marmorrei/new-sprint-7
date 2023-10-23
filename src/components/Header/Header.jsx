@@ -1,7 +1,13 @@
 import { HeaderStyle } from './Styled-components';
 import SocialNetwork from '../SocialNetwork/SocialNetwork';
+import Login from '../Login/Login';
+import { useLoginModalContext } from '../../context/ModalsProvider';
+import { useUserLoginContext } from '../../context/UserProvider';
 
 export default function Header() {
+  const [displayLogin, setDisplayLogin] = useLoginModalContext();
+  const [username, setUsername, resetUserData] = useUserLoginContext();
+
   return (
     <HeaderStyle className='header'>
       <div className='header-items'>
@@ -12,7 +18,7 @@ export default function Header() {
             alt='sw-logo'
           />
         </div>
-        <ul className='login'>
+        <ul className='search-login'>
           <li>
             <img
               src='/src/assets/images/search-left-1506-svgrepo-com.svg'
@@ -21,16 +27,35 @@ export default function Header() {
             />
             <span>SEARCH</span>
           </li>
-          <li>
+          <li
+            onClick={() => {
+              setDisplayLogin(!displayLogin);
+              resetUserData();
+            }}
+            className='login'
+          >
             <img
               src='/src/assets/images/person-male-svgrepo-com.svg'
               alt='login'
               className='small-logo'
             />
-            <span>SIGN IN</span>
+            <span>{username || 'SIGN IN'}</span>
           </li>
+          {username !== undefined && (
+            <li className='logout'>
+              <span
+                onClick={() => {
+                  setUsername(undefined);
+                  resetUserData();
+                }}
+              >
+                LOGOUT
+              </span>
+            </li>
+          )}
         </ul>
       </div>
+      {displayLogin && <Login />}
     </HeaderStyle>
   );
 }
