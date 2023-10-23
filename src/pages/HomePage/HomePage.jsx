@@ -1,7 +1,17 @@
 import { Link } from 'react-router-dom';
 import { MainContainer } from './Styled-components';
+import { useCurrentPathContext } from '../../context/PathProvider';
+import { useEffect } from 'react';
 
 export default function HomePage() {
+  const [currentPath, changePath] = useCurrentPathContext();
+
+  useEffect(() => {
+    changePath('/');
+  }, []);
+
+  console.log(currentPath);
+
   return (
     <MainContainer>
       <section>

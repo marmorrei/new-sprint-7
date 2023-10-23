@@ -1,12 +1,12 @@
 import { HeaderStyle } from './Styled-components';
 import SocialNetwork from '../SocialNetwork/SocialNetwork';
-import Login from '../Login/Login';
-import { useLoginModalContext } from '../../context/ModalsProvider';
 import { useUserLoginContext } from '../../context/UserProvider';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
-  const [displayLogin, setDisplayLogin] = useLoginModalContext();
   const [username, setUsername, resetUserData] = useUserLoginContext();
+
+  const navigate = useNavigate();
 
   return (
     <HeaderStyle className='header'>
@@ -29,8 +29,8 @@ export default function Header() {
           </li>
           <li
             onClick={() => {
-              setDisplayLogin(!displayLogin);
               resetUserData();
+              navigate('/login');
             }}
             className='login'
           >
@@ -47,6 +47,7 @@ export default function Header() {
                 onClick={() => {
                   setUsername(undefined);
                   resetUserData();
+                  navigate('/');
                 }}
               >
                 LOGOUT
@@ -55,7 +56,6 @@ export default function Header() {
           )}
         </ul>
       </div>
-      {displayLogin && <Login />}
     </HeaderStyle>
   );
 }

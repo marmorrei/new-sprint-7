@@ -1,8 +1,5 @@
 import { useUserDataContext } from '../../context/UserProvider';
-import {
-  useLoginModalContext,
-  useSignUpModalContext,
-} from '../../context/ModalsProvider';
+import { useSignUpModalContext } from '../../context/ModalsProvider';
 import {
   ButtonsContainer,
   ModalBody,
@@ -10,12 +7,15 @@ import {
   ModalHeader,
   Overlay,
 } from './Styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useCurrentPathContext } from '../../context/PathProvider';
 
 export default function SignUp() {
   // Context
   const [userData, setUserData, resetUserData] = useUserDataContext();
-  const [displayLogin, setDisplayLogin] = useLoginModalContext();
   const [displaySignUp, setDisplaySignUp] = useSignUpModalContext();
+  const navigate = useNavigate();
+  const [currentPath] = useCurrentPathContext();
 
   // Sign Up user
   const handleSubmit = e => {
@@ -27,11 +27,17 @@ export default function SignUp() {
     }).then(res => res.json());
 
     setDisplaySignUp(!displaySignUp);
-    setDisplayLogin(!displayLogin);
+    navigate(currentPath);
   };
 
   const handleChange = e => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
+  const handleClick = () => {
+    setDisplaySignUp(!displaySignUp);
+    resetUserData();
+    navigate(currentPath);
   };
 
   return (
@@ -47,14 +53,7 @@ export default function SignUp() {
               alt='back-button'
             />
           </button>
-          <button
-            className='close-button'
-            onClick={() => {
-              setDisplaySignUp(!displaySignUp);
-              setDisplayLogin(!displayLogin);
-              resetUserData();
-            }}
-          >
+          <button className='close-button' onClick={() => handleClick()}>
             <img
               src='/src/assets/images/close-svgrepo-com.svg'
               alt='close-button'

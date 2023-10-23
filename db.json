@@ -5,24 +5,6 @@
       "password": "$2a$10$5dvFGLmgi.F7.SO0SDzMnOliJXOU5nSyhh7hKpVnvhJbL7CsqQLPe",
       "username": "Maria",
       "id": 1
-    },
-    {
-      "email": "cedric@email.com",
-      "password": "$2a$10$HEbd/MZl56Ih5whEv9mD5.FinpYtSgkk1N616ptbDDYlmZ.HARAk.",
-      "username": "cdc",
-      "id": 2
-    },
-    {
-      "email": "pedro@email.com",
-      "password": "$2a$10$ZS2cqOJh1P59ZuzRxQ7yJuWToNKA5hnxFPINv92riAfTMtT3XG31G",
-      "username": "pedro",
-      "id": 3
-    },
-    {
-      "email": "juan@email.com",
-      "password": "$2a$10$Tyeo12FpzBPiYbnJeL5soeE30/DqrP27LRm70Bf8eMfmJKij2G5X2",
-      "username": "juan",
-      "id": 4
     }
   ]
 }

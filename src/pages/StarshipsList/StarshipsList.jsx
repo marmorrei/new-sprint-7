@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import StarshipDetailsModal from '../../components/StarshipDetailsModal/StarshipDetailsModal';
 import { MainContainer, ListItem } from './Styled-components';
 import { useStarships } from '../../utils/hooks/useStarships';
 import starshipsImg from '../../assets/starship-images';
+import { useCurrentPathContext } from '../../context/PathProvider';
 
 export default function StarshipsList() {
   const [displayModal, setDisplayModal] = useState(false);
@@ -15,6 +16,13 @@ export default function StarshipsList() {
     hasNextPage,
     fetchNextPage,
   } = useStarships();
+  const [currentPath, setCurrentPath] = useCurrentPathContext();
+
+  useEffect(() => {
+    setCurrentPath('/starships');
+  }, []);
+
+  console.log(currentPath);
 
   const starshipsList = starships?.map(starship => (
     <ListItem

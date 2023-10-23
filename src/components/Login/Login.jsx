@@ -1,8 +1,8 @@
-import { useUserDataContext } from '../../context/UserProvider';
 import {
-  useLoginModalContext,
-  useSignUpModalContext,
-} from '../../context/ModalsProvider';
+  useUserDataContext,
+  useUserLoginContext,
+} from '../../context/UserProvider';
+import { useSignUpModalContext } from '../../context/ModalsProvider';
 import { fetchUsers } from '../../utils/api/fetchUsers';
 import SignUp from '../SignUp/SignUp';
 import {
@@ -11,12 +11,16 @@ import {
   ModalHeader,
   ModalBody,
 } from './Styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useCurrentPathContext } from '../../context/PathProvider';
 
 export default function Login() {
   // Context
   const [userData, setUserData, resetUserData] = useUserDataContext();
-  const [displayLogin, setDisplayLogin] = useLoginModalContext();
   const [displaySignUp, setDisplaySignUp] = useSignUpModalContext();
+  const [currentPath] = useCurrentPathContext();
+  const [username] = useUserLoginContext();
+  const navigate = useNavigate();
 
   // Login user
   const handleSubmit = async e => {
@@ -36,7 +40,7 @@ export default function Login() {
                 alert('Incorrect password');
               } else {
                 setUserData({ ...userData, username: data.user.username });
-                setDisplayLogin(!displayLogin);
+                navigate(currentPath);
               }
             })
         : setDisplaySignUp(!displaySignUp);
@@ -55,8 +59,8 @@ export default function Login() {
         <button
           className='close-button'
           onClick={() => {
-            setDisplayLogin(!displayLogin);
             resetUserData();
+            username !== undefined ? navigate(currentPath) : navigate('/');
           }}
         >
           <img
